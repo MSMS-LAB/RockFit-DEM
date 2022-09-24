@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{438F9DA3-5A1A-4F65-893C-2F9FFB23AA59}</ProjectGuid>
+    <RootNamespace>Drill_0_001</RootNamespace>
+    <ProjectName>Drill_W</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.4.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;curand.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <CudaCompile>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+    <CudaLink>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </CudaLink>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;curand.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <CudaCompile>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+    <CudaLink>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </CudaLink>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CudaCompile Include="kernel.cu" />
+    <CudaCompile Include="md_boundinteractions_construct.cu" />
+    <CudaCompile Include="md_braziltest_simple.cu" />
+    <CudaCompile Include="md_braziltest_simple2.cu" />
+    <CudaCompile Include="md_calculateforces.cu" />
+    <CudaCompile Include="md_calculateforcesbpm.cu" />
+    <CudaCompile Include="md_calculateforcesbpm_cpu.cpp" />
+    <CudaCompile Include="md_calculateforcesbpm_cpu.cu" />
+    <CudaCompile Include="md_calculateforcesdem.cu" />
+    <CudaCompile Include="md_calculateforcesdem2.cu" />
+    <CudaCompile Include="md_calculateforcesdem3.cu" />
+    <CudaCompile Include="md_calculateforcesdem6.cu" />
+    <CudaCompile Include="md_calculateforceslj.cu" />
+    <CudaCompile Include="md_calculateforcespp.cu" />
+    <CudaCompile Include="md_calculateincrements.cu" />
+    <CudaCompile Include="md_calculateincrementsdem.cu" />
+    <CudaCompile Include="md_calculate_cell.cu" />
+    <CudaCompile Include="md_calculationbraziltest.cu" />
+    <CudaCompile Include="md_calculationuniaxialcompression.cu" />
+    <CudaCompile Include="md_cell_distribution.cu" />
+    <CudaCompile Include="md_checkbreakconditiondem.cu" />
+    <CudaCompile Include="md_check_test.cu" />
+    <CudaCompile Include="md_createcylindersample.cu" />
+    <CudaCompile Include="md_cutcylinderspecimen_simple.cu" />
+    <CudaCompile Include="md_cylinderrestriction.cu" />
+    <CudaCompile Include="md_firerelaxation.cu" />
+    <CudaCompile Include="md_generate_particles.cu" />
+    <CudaCompile Include="md_interaction_list_construct.cu" />
+    <CudaCompile Include="md_interaction_list_construction.cu" />
+    <CudaCompile Include="md_interaction_list_reconstruct.cu" />
+    <CudaCompile Include="md_interaction_list_reconstructbpm.cu" />
+    <CudaCompile Include="md_parallelepipedrestriction.cu" />
+    <CudaCompile Include="md_readparticlesfile.cu" />
+    <CudaCompile Include="md_results.cu" />
+    <CudaCompile Include="md_sumupforcesdem.cu" />
+    <CudaCompile Include="md_uniaxialcompression.cu" />
+    <CudaCompile Include="md_uniaxialcompression2_simple.cu" />
+    <CudaCompile Include="md_uniaxialcompression3_simple.cu" />
+    <CudaCompile Include="md_uniaxialcompression_simple.cu" />
+    <CudaCompile Include="mp_determineconjgradient.cu" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="md.h" />
+    <ClInclude Include="md_data_types.h" />
+    <ClInclude Include="md_definedparams.h" />
+    <ClInclude Include="md_math_constants.h" />
+    <ClInclude Include="md_phys_constants.h" />
+    <ClInclude Include="mp.h" />
+    <ClInclude Include="mp_task.h" />
+    <ClInclude Include="pcuda_helper.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="md.cpp" />
+    <ClCompile Include="md_renewinteractionlist_full.cpp" />
+    <ClCompile Include="md_savealldata.cpp" />
+    <ClCompile Include="md_savelammpsdata.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.4.targets" />
+  </ImportGroup>
+</Project>
